@@ -1,24 +1,25 @@
 [gd_scene format=3 uid="uid://c3qlyl6ej4und"]
 
+[ext_resource type="Texture2D" uid="uid://bg7xoey2fq0kt" path="res://assets/citrus_orchard_puresky_2k.hdr" id="1_mjo2q"]
 [ext_resource type="Material" uid="uid://b3iy4sdicbwx6" path="res://resources/azulMate.tres" id="1_t4iy8"]
 [ext_resource type="Material" uid="uid://bor0gnj81evu5" path="res://resources/turquesalMate.tres" id="2_mjo2q"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_srobj"]
-sky_top_color = Color(0.16481173, 0.59438854, 0.8617172, 1)
-sky_horizon_color = Color(0.48533154, 0.5951916, 0.6719945, 1)
-ground_bottom_color = Color(0, 0.009863323, 0.049746417, 1)
-ground_horizon_color = Color(0.48533154, 0.5951916, 0.6719945, 1)
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_2uu5f"]
+panorama = ExtResource("1_mjo2q")
+energy_multiplier = 0.25
 
 [sub_resource type="Sky" id="Sky_l88sr"]
-sky_material = SubResource("ProceduralSkyMaterial_srobj")
+sky_material = SubResource("PanoramaSkyMaterial_2uu5f")
 
 [sub_resource type="Environment" id="Environment_t4iy8"]
 background_mode = 2
+background_color = Color(0.94619256, 0.60328674, 0.62081677, 1)
 sky = SubResource("Sky_l88sr")
 tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_srobj"]
+cull_mode = 2
 albedo_color = Color(1, 0.42594042, 0.55263466, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_srobj"]
@@ -58,7 +59,9 @@ albedo_color = Color(0.30323282, 0.30323282, 0.30323282, 1)
 environment = SubResource("Environment_t4iy8")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1562663941]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+transform = Transform3D(-0.27686614, -0.29185072, -0.9155153, 0.3718715, -0.911064, 0.17797196, -0.8860344, -0.2911797, 0.36077374, 0, 1.9505248, 0)
+light_color = Color(1, 1, 0.8745098, 1)
+light_energy = 0.5
 shadow_enabled = true
 
 [node name="Floor" type="MeshInstance3D" parent="." unique_id=1586020707]

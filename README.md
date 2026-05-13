@@ -10,3 +10,5 @@ Se agregaron unas meshes, camara, e ilumacion global con un sol a la escena.
 Los materiales tambien estan ligados a la hora de copiar, o hacemos los materiales unicos para trabajarlos aparte, desligarlos vaya, o hacemos en el nodo de nuestra mesh, Geometry Material Override en nuestra GeometryInstance3D de nuestra MeshInstance3D.
 
 Se pueden guardar los materiales para poder usarlos de manera invididual
+
+DirectionalLight3D viene siendo un sol pues es una luz infinita.
