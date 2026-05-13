@@ -12,3 +12,7 @@ Los materiales tambien estan ligados a la hora de copiar, o hacemos los material
 Se pueden guardar los materiales para poder usarlos de manera invididual
 
 DirectionalLight3D viene siendo un sol pues es una luz infinita.
+
+Tambien se pueden poner una imagen hdr como el cielo, esta pondra sus propias propiedades del cielo.
+
+El culling es cuando un poligono no dibuja lo que esta dentro, o fuera del mesh. Eso si se quiere, se puede descativar en el material>transparency>culling.
