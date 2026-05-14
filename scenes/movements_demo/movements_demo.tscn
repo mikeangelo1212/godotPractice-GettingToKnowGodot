@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://c3qlyl6ej4und"]
 
+[ext_resource type="Script" uid="uid://q8euywktcxin" path="res://scenes/movements_demo/movements_demo.gd" id="1_2uu5f"]
 [ext_resource type="Texture2D" uid="uid://bg7xoey2fq0kt" path="res://assets/citrus_orchard_puresky_2k.hdr" id="1_mjo2q"]
 [ext_resource type="Material" uid="uid://b3iy4sdicbwx6" path="res://resources/azulMate.tres" id="1_t4iy8"]
 [ext_resource type="Material" uid="uid://bor0gnj81evu5" path="res://resources/turquesalMate.tres" id="2_mjo2q"]
@@ -54,6 +55,7 @@ material = SubResource("StandardMaterial3D_2uu5f")
 albedo_color = Color(0.30323282, 0.30323282, 0.30323282, 1)
 
 [node name="MovementsDemo" type="Node" unique_id=1833857021]
+script = ExtResource("1_2uu5f")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1718232689]
 environment = SubResource("Environment_t4iy8")
@@ -89,11 +91,11 @@ transform = Transform3D(-8.742278e-09, 0.3, 0, -0.20000002, -1.3113417e-08, 0, 0
 mesh = SubResource("CylinderMesh_0cc4j")
 
 [node name="Capsule2" type="MeshInstance3D" parent="." unique_id=1818596727]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 7.84095, 1.5596836, -9.013461)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.15904999, 1.5596836, -9.013461)
 material_override = SubResource("StandardMaterial3D_3bcou")
 mesh = SubResource("CapsuleMesh_mjo2q")
 
 [node name="Nose" type="MeshInstance3D" parent="Capsule2" unique_id=2109872655]
-transform = Transform3D(-8.742278e-09, 0.3, 0, -0.20000002, -1.3113417e-08, 0, 0, 0, 0.20000002, 0.741086, 0.2958002, 0)
+transform = Transform3D(-4.440892e-16, 4.967054e-09, -0.20000002, -0.20000002, -1.3113417e-08, -2.452027e-16, -8.742278e-09, 0.3, 4.967054e-09, 0.008637108, 0.29245305, 0.5181999)
 material_override = SubResource("StandardMaterial3D_qkh1w")
 mesh = SubResource("CylinderMesh_0cc4j")

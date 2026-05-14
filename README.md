@@ -16,3 +16,94 @@ DirectionalLight3D viene siendo un sol pues es una luz infinita.
 Tambien se pueden poner una imagen hdr como el cielo, esta pondra sus propias propiedades del cielo.
 
 El culling es cuando un poligono no dibuja lo que esta dentro, o fuera del mesh. Eso si se quiere, se puede descativar en el material>transparency>culling.
+
+### Translation
+
+Cuando creamos un script nos da un onready y un _process delta, este esta corriendo entre frames, lo cual nos permite ejecutar codigo cuando el juegoe esta corriendo.
+
+Podemos importar los nodos al script de la escena arrastrandolos al codigo y con control lo exporta como variable @onready, la cual tiene el tipo explicito y la referencia al objeto que queremos.
+
+```gdscript 
+@onready var capsule_2: MeshInstance3D = $Capsule2
+```
+
+Las direcciones de godot "positivas" estan en negativas. Usualmente deben invertirse para que avancen
+
+```godot
+@onready var capsule_2: MeshInstance3D = $Capsule2
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	capsule_2.translate_object_local(Vector3.FORWARD * delta * -1)
+	pass
+```
+
+Tambien existe el global translate, el cual este no le importa la rotacion del objeto local, lo hace con los angulos del mundo, en vez de como esta rotado el objeto local para usar su vector al moverse.
+
+```godot
+	capsule_2.global_translate(Vector3.FORWARD * delta * -1)
+```
+
+Se puede agregar input de la siguiente manera con este translate que hemos puesto
+```godot
+	if Input.is_action_pressed("ui_up"):
+		capsule_2.global_translate(Vector3.FORWARD * delta * -1)
+	if Input.is_action_pressed("ui_down"):
+		capsule_2.global_translate(Vector3.BACK * delta * -1)
+```
+
+Ahora, la manera en la que quedo nuestro codigo para que tambien soportara aceleracion de cierta manera es la siguiente
+**NOTA:** Normalized() es para que la suma de nuestros vectores en total sea 1, asi por si digamos. Hay movimiento en diagonal este no sea
+
+```godot
+Vector3(0,1,1)
+```
+
+sino
+
+```godot
+Vector3(0,0.5,0.5)
+```
+
+```godot
+extends Node
+
+@onready var capsule_2: MeshInstance3D = $Capsule2
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+var _speed: float = 0.0
+var _topSpeed: float = 6.0
+var _direction: Vector3
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	
+	_direction=Vector3.ZERO
+	
+	if _speed>_topSpeed:_speed=_topSpeed
+	elif  _speed <= 0: _speed= 0
+	else: _speed-=.875
+	print(_speed)
+	
+	#capsule_2.translate_object_local(Vector3.FORWARD * delta * -1)
+	#capsule_2.global_translate(Vector3.FORWARD * delta * -1)
+	
+	if Input.is_action_pressed("ui_up"):
+		_speed+=1.3
+		_direction+=Vector3.FORWARD
+	if Input.is_action_pressed("ui_down"):
+		_speed+=1.3
+		_direction+=Vector3.BACK
+	if Input.is_action_pressed("ui_left"):
+		_speed+=1.3
+		_direction+=Vector3.LEFT
+	if Input.is_action_pressed("ui_right"):
+		_speed+=1.3
+		_direction+=Vector3.RIGHT
+	capsule_2.translate_object_local(_direction.normalized() * delta * -_speed)
+	pass
+
+```
