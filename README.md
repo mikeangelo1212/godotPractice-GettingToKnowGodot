@@ -29,7 +29,7 @@ Podemos importar los nodos al script de la escena arrastrandolos al codigo y con
 
 Las direcciones de godot "positivas" estan en negativas. Usualmente deben invertirse para que avancen
 
-```godot
+```gdscript
 @onready var capsule_2: MeshInstance3D = $Capsule2
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -39,12 +39,12 @@ func _process(delta: float) -> void:
 
 Tambien existe el global translate, el cual este no le importa la rotacion del objeto local, lo hace con los angulos del mundo, en vez de como esta rotado el objeto local para usar su vector al moverse.
 
-```godot
+```gdscript
 	capsule_2.global_translate(Vector3.FORWARD * delta * -1)
 ```
 
 Se puede agregar input de la siguiente manera con este translate que hemos puesto
-```godot
+```gdscript
 	if Input.is_action_pressed("ui_up"):
 		capsule_2.global_translate(Vector3.FORWARD * delta * -1)
 	if Input.is_action_pressed("ui_down"):
@@ -54,17 +54,17 @@ Se puede agregar input de la siguiente manera con este translate que hemos puest
 Ahora, la manera en la que quedo nuestro codigo para que tambien soportara aceleracion de cierta manera es la siguiente
 **NOTA:** Normalized() es para que la suma de nuestros vectores en total sea 1, asi por si digamos. Hay movimiento en diagonal este no sea
 
-```godot
+```gdscript
 Vector3(0,1,1)
 ```
 
 sino
 
-```godot
+```gdscript
 Vector3(0,0.5,0.5)
 ```
 
-```godot
+```gdscript
 extends Node
 
 @onready var capsule_2: MeshInstance3D = $Capsule2
