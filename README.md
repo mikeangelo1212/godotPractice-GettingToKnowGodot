@@ -107,3 +107,33 @@ func _process(delta: float) -> void:
 	pass
 
 ```
+
+### Rotacion
+
+Pondremos a la otra mesh a seguir el jugador.
+
+```gdscript
+capsule.transform.basis = capsule_2.transform.basis
+```
+
+La propiedad transform de nuestro nodo controla la rotacion del objeto
+
+Si alguna vez, nuestro nodo es hijo de otro, las propiedades de posicion, y transformacion son alteradas por el padre, si solo queremos la rotacion del objeto hijo, usamos la propiedad global
+
+```gdscript
+capsule.global_transform.basis = capsule_2.global_transform.basis
+```
+
+Transform tambien tiene la escala en su propiedad implicita. De manera que como tenemos el codigo anterior, este tambien cambiara a la escala, si solo queremos la rotacion y no el transform completo que tambien incluye escala. Lo llamariamos asi.
+
+```gdscript
+capsule_2.global_transform.otrhonormalized()
+```
+
+Si queremos que nuestro nodo mire al otro usaremos el siguiente metodo
+```gdscript
+capsule.look_at(capsule_2.global_position,Vector3.UP,true)
+#void look_at(target: Vector3, up: Vector3 = Vector3(0, 1, 0), use_model_front: bool = false)
+```
+
+Capsula mira a la posicion global de la capsula dos, giraras con el eje Y como tu pivote, o sea girar hacia los lados, usando el frente del modelo (true)

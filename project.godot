@@ -14,6 +14,11 @@ config/name="GettingToKnowGodot"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[editor]
+
+movie_writer/movie_file="C:/Users/delarubIT/Videos/godoTest/movietest.ogv"
+movie_writer/fps=30
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
